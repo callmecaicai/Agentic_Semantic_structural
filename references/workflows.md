@@ -10,6 +10,8 @@ These workflows are coordination habits, not a cage. Use them to preserve contin
 
 Every session starts with orientation, not action.
 
+Use `python3 scripts/harness.py ...` on Linux/macOS. The script also has a shebang and executable bit, so `./scripts/harness.py ...` is fine after clone.
+
 Read:
 
 ```text
@@ -76,13 +78,13 @@ planning block
 Command:
 
 ```bash
-python agentic-structural-harness/scripts/harness.py new-artifact --root <project-root> <artifact-path>
+python3 scripts/harness.py new-artifact --root <project-root> <artifact-path>
 ```
 
 Example:
 
 ```bash
-python agentic-structural-harness/scripts/harness.py new-artifact --root det workspace/src/models/backbones/resnet.py
+python3 scripts/harness.py new-artifact --root det workspace/src/models/backbones/resnet.py
 ```
 
 Then edit the generated mirror:
@@ -101,8 +103,8 @@ Related
 Run:
 
 ```bash
-python agentic-structural-harness/scripts/harness.py accept-mirror --root <project-root> <artifact-path>
-python agentic-structural-harness/scripts/harness.py audit --root <project-root>
+python3 scripts/harness.py accept-mirror --root <project-root> <artifact-path>
+python3 scripts/harness.py audit --root <project-root>
 ```
 
 `accept-mirror` means a human or agent has reviewed the mirror against the current artifact and wants the current hash to become the baseline. If audit detects drift later, do not silently repair. Either update the mirror, update the artifact, or leave a conflict.
@@ -126,13 +128,13 @@ system execution
 Command:
 
 ```bash
-python agentic-structural-harness/scripts/harness.py new-event --root <project-root> <event-class> --id <id> --slug <slug>
+python3 scripts/harness.py new-event --root <project-root> <event-class> --id <id> --slug <slug>
 ```
 
 Example:
 
 ```bash
-python agentic-structural-harness/scripts/harness.py new-event --root det experiment --id exp001 --slug dataset_a_frcnn --trigger workspace/scripts/train.py
+python3 scripts/harness.py new-event --root det experiment --id exp001 --slug dataset_a_frcnn --trigger workspace/scripts/train.py
 ```
 
 Fill the record:
@@ -195,7 +197,7 @@ Do not let raw evidence directly rewrite the frame. Reflux is the bridge.
 Run audit after structural changes:
 
 ```bash
-python agentic-structural-harness/scripts/harness.py audit --root <project-root>
+python3 scripts/harness.py audit --root <project-root>
 ```
 
 Audit checks:
@@ -215,7 +217,7 @@ pending-reflux
 Use:
 
 ```bash
-python agentic-structural-harness/scripts/harness.py audit --root <project-root> --no-conflicts
+python3 scripts/harness.py audit --root <project-root> --no-conflicts
 ```
 
 for a dry report.

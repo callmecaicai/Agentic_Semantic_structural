@@ -1,132 +1,196 @@
 ---
-name: structural-project-kernel
-description: Abstract first-principles project methodology for AI-assisted work that needs persistent Markdown semantic management and artifact/code/project progression. Use when Codex must clarify intent, locate artifacts in a semantic structure, create mirror docs for stable artifacts, create semantic record folders for event instances, reflux evidence into understanding, maintain artifact-document coupling, record conflicts and decisions, or adapt the same meta-rules to life planning, paper reading, paper writing, research, coding, training plans, or any long-running project.
+name: agentic-structural-harness
+description: "Final agent-friendly semantic harness toolkit for sustained AI-assisted projects. Use when Codex must initialize or maintain a project split into .agentic control, semantic memory, and workspace execution layers; create stable artifact mirror docs; create event record folders; audit path/schema consistency; write conflicts; and reflux evidence into project understanding."
 ---
 
-# Structural Project Kernel
+# Agentic Structural Harness
 
-This skill is a domain-neutral routing kernel for sustained AI collaboration.
+Use this when a project needs an agentic collaboration surface for humans and AI agents.
+It is not a full automation framework. It provides paths, templates, and light checks so agents can re-enter a project, understand it quickly, and leave usable semantic records.
 
-Its first principle: every ongoing project is a relation between current intent, structural understanding, historical evidence, and unresolved conflict. Do not let any one of these impersonate another.
-
-Its harness principle: stable executable objects need stable mirror documents; one-time executable events need incremental semantic record folders.
-
----
-
-## First Read
-
-When entering a project using this skill:
-
-1. Read [pulse.md](pulse.md).
-2. Read [docs/frame/current_task.md](docs/frame/current_task.md) and [docs/frame/success_criteria.md](docs/frame/success_criteria.md).
-3. Check [docs/conflicts/](docs/conflicts/) for open conflicts.
-4. Read only the kernel rule or domain adapter needed for the next action.
-5. Output and update the five-line pulse before acting.
-
-Pulse format is defined in [kernel/pulse_protocol.md](kernel/pulse_protocol.md):
+Root shape:
 
 ```text
-任务: <当前任务的真问题、成功标准>
-位置: <在哪个对象、哪条路径上工作>
-最近: <最近一条相关 trace,无则 none>
-冲突: <未解决的相关 conflict,无则 none>
-动作: <clarify | locate | reflux> 在 <frame | field | trace>
+project/
+├── .agentic/   # control: config, templates, audits
+├── semantic/   # memory: frame, field, records, trace, conflicts
+└── workspace/  # execution: code, configs, scripts, tests, runs
+```
+
+Duality:
+
+```text
+stable object  <-> fixed mirror document
+event instance <-> semantic record folder
+```
+
+Do not silently repair drift. Audit records structural breaks; user and agent judgment resolves semantic meaning.
+
+---
+
+## Start
+
+Initialize a target project:
+
+```bash
+python3 scripts/harness.py init --root <project-root>
+```
+
+On Linux/macOS the script is executable after clone, so this also works:
+
+```bash
+./scripts/harness.py init --root <project-root>
+```
+
+If already initialized, first read:
+
+```text
+semantic/pulse.md
+semantic/frame/current_task.md
+semantic/conflicts/
+.agentic/project.yaml
+```
+
+Choose:
+
+```text
+clarify > reflux > locate
+```
+
+- `clarify`: object, goal, success, or failure boundary is unclear.
+- `reflux`: evidence exists but has not updated understanding.
+- `locate`: place a stable artifact or event into the harness.
+
+---
+
+## CLI
+
+```bash
+python3 scripts/harness.py pulse --root <project-root>
+python3 scripts/harness.py new-artifact --root <project-root> workspace/src/foo.py
+python3 scripts/harness.py accept-mirror --root <project-root> workspace/src/foo.py
+python3 scripts/harness.py new-event --root <project-root> experiment --id exp001 --slug baseline
+python3 scripts/harness.py audit --root <project-root>
+python3 scripts/harness.py reflux-check --root <project-root>
+```
+
+The CLI creates common structure, checks obvious path/schema breaks, and records conflicts only for structural breaks. It does not train models, write business logic, decide semantic truth, or replace agent investigation.
+
+---
+
+## Layers
+
+`.agentic/` declares the control schema:
+
+```text
+artifact_glob -> mirror_pattern
+event_class   -> record_pattern + required files
+```
+
+`semantic/` carries Markdown memory:
+
+```text
+pulse / frame / field / records / trace / conflicts
+```
+
+`workspace/` carries executable artifacts and raw evidence:
+
+```text
+src / configs / scripts / tests / probes / runs / checkpoints
 ```
 
 ---
 
-## Kernel Rules
+## Stable Artifact
 
-The kernel is the source of truth. Domain adapters instantiate it; they do not replace it.
+Use for anything repeatedly referenced, modified, composed, or verified: code module, prompt block, dataset adapter, paper section, workflow node, plan unit.
 
-| Rule | File | Role |
-|---|---|---|
-| A | [kernel/three_actions.md](kernel/three_actions.md) | clarify / locate / reflux x frame / field / trace |
-| B | [kernel/three_contexts.md](kernel/three_contexts.md) | separate constitutional, process, and evidence contexts |
-| C | [kernel/path_authority.md](kernel/path_authority.md) | make every path declare identity, authority, lifecycle, writer, reader |
-| D | [kernel/coupling_principle.md](kernel/coupling_principle.md) | bind artifacts to mirror documents, anchors, audit, and verification |
-| E | [kernel/conflict_mechanism.md](kernel/conflict_mechanism.md) | record inconsistency explicitly; do not silently repair it |
-| F | [kernel/reflux_mechanism.md](kernel/reflux_mechanism.md) | upgrade evidence into understanding through reflux |
-| G | [kernel/frozen_vs_evolving.md](kernel/frozen_vs_evolving.md) | freeze evidence, evolve understanding, record transitions |
-| H | [kernel/pulse_protocol.md](kernel/pulse_protocol.md) | start every handoff with a five-line pulse |
-| I | [kernel/templates_as_schema.md](kernel/templates_as_schema.md) | treat templates as schemas, not decoration |
-| J | [kernel/semantic_duality.md](kernel/semantic_duality.md) | bind stable artifacts to mirror docs and event instances to record folders |
-
-Templates live in [kernel/templates/](kernel/templates/).
-
----
-
-## Action Routing
-
-Choose the next action by priority:
-
-1. **clarify** if the task object, goal, success criteria, or unacceptable failure are unclear.
-2. **reflux** if evidence exists but has not been integrated into frame or field.
-3. **locate** if the intent is clear and the structure is ready to receive a new or changed object.
-
-Do not construct on top of unclear intent. Do not add structure on top of unintegrated evidence.
-
----
-
-## Three Layers
-
-| Layer | Carries | Typical files |
-|---|---|---|
-| **frame** | current intent, goal, success criteria, constraints | [docs/frame/](docs/frame/) |
-| **field** | current structural understanding, path authority, contracts | kernel rules + project/domain field docs |
-| **trace** | evidence, decisions, failures, reflux history | [docs/trace/](docs/trace/) |
-| **conflicts** | explicit unresolved inconsistency | [docs/conflicts/](docs/conflicts/) |
-
-`conflicts` is not a fourth layer. It is the place where any failed relation between layers is held until adjudicated.
-
----
-
-## Semantic Duality
-
-Any artifact that will be repeatedly changed must have a mirror document. Any event that actually happened must have a semantic record folder.
-
-The kernel defines two paired structures:
-
-```text
-stable artifact <-> mirror document
-event instance  <-> semantic record folder
+```bash
+python3 scripts/harness.py new-artifact --root <project-root> workspace/src/models/backbones/resnet.py
 ```
 
-The first pair is specified by [kernel/coupling_principle.md](kernel/coupling_principle.md). The full dual structure is specified by [kernel/semantic_duality.md](kernel/semantic_duality.md).
+Creates:
 
-The concrete mapping is owned by a domain adapter. For available adapters, see [domains/README.md](domains/README.md). The current concrete adapter is [domains/deep_learning/](domains/deep_learning/).
+```text
+workspace/src/models/backbones/resnet.py
+  <-> semantic/field/mirrors/workspace/src/models/backbones/resnet.md
+```
 
----
+The mirror records identity, I/O, risks, verification, and audit hash. It evolves with the artifact; it does not store event history.
 
-## Domain Adapters
+New mirrors start with `audit_hash: pending`. After a human or agent has reviewed the mirror against the artifact:
 
-Load a domain adapter only when the current project type requires it.
-
-Examples:
-
-- life training planning -> create or use a training-plan adapter
-- paper reading -> create or use a paper-reading adapter
-- paper writing -> create or use a writing adapter
-- project management -> create or use a planning adapter
-- deep learning engineering -> use [domains/deep_learning/](domains/deep_learning/)
-
-If no adapter exists, operate at the kernel level and create only the minimal adapter pieces that have become stable through repeated use.
+```bash
+python3 scripts/harness.py accept-mirror --root <project-root> workspace/src/models/backbones/resnet.py
+```
 
 ---
 
-## Exit Conditions
+## Event Instance
 
-- **clarify complete**: object, goal, success criteria, worst acceptable outcome, and scope are explicit.
-- **locate complete**: stable objects have mirror documents; event instances have semantic record folders; anchors, verification bridge, and path authority entry exist if needed.
-- **reflux complete**: the evidence has an entry in [docs/trace/reflux_journal.md](docs/trace/reflux_journal.md); accepted entries update frame/field, pending entries become conflicts.
+Use for something that happened once: training run, evaluation run, agent task, reading session, writing pass, planning review.
+
+```bash
+python3 scripts/harness.py new-event --root <project-root> experiment --id exp001 --slug dataset_a_frcnn
+```
+
+Creates:
+
+```text
+semantic/records/experiments/YYYY-MM-DD_exp001_dataset_a_frcnn/
+├── index.md
+├── input.md
+├── process.md
+├── output.md
+├── analysis.md
+└── reflux.md
+```
+
+Event records never overwrite history.
+
+---
+
+## Audit
+
+```bash
+python3 scripts/harness.py audit --root <project-root>
+```
+
+Checks structural consistency:
+
+```text
+uncovered-artifact       artifact without mirror
+orphan-doc               mirror without artifact
+no-front-matter          missing front matter
+no-audit-hash            missing audit_hash
+artifact-vs-doc          hash drift
+incomplete-record        event folder missing files
+record-name-out-of-schema record folder not matching schema
+pending-mirror-review    mirror exists but has not been reviewed
+pending-reflux           event evidence has not been interpreted
+```
+
+Only structural breaks write conflict files. Pending review/reflux is reported without creating conflict noise. Use `--no-conflicts` to report without writing conflict files.
+
+---
+
+## References
+
+Read only when needed:
+
+- [references/architecture.md](references/architecture.md): `.agentic/semantic/workspace` architecture.
+- [references/principles.md](references/principles.md): full structural principles and semantic duality.
+- [references/workflows.md](references/workflows.md): clarify / locate / reflux / audit workflows.
+- [references/detection-example.md](references/detection-example.md): medium-complexity object detection example.
 
 ---
 
 ## Highest Rules
 
-1. Keep the kernel first-principled and domain-neutral.
-2. Put domain details in `domains/<adapter>/`, never in the kernel unless they are examples.
-3. Never silently repair a disagreement between intent, artifact, document, and evidence.
-4. Evidence freezes; understanding evolves; decisions explain the transition.
-5. If a path cannot declare what it is, what authority it has, and who may write it, it should not exist yet.
-6. Stable objects do not accumulate history inside themselves; event records do not overwrite history.
+1. Keep control, semantic, and execution layers separate.
+2. Stable objects get fixed mirror docs.
+3. Event instances get new semantic record folders.
+4. Paths carry meaning; schema declares meaning; audit checks reality.
+5. Evidence freezes; understanding evolves; decisions explain transitions.
+6. Keep the harness lighter than the project. Let humans and agents make judgment.
+7. Conflicts are explicit. Do not silently repair semantic drift.
