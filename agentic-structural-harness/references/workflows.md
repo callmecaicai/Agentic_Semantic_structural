@@ -2,6 +2,8 @@
 
 This file describes how an agent should use the harness during real work. Use it when the short `SKILL.md` is not enough to decide the next move.
 
+These workflows are coordination habits, not a cage. Use them to preserve continuity while leaving interpretation, refactoring, and judgment to the human-agent loop.
+
 ---
 
 ## Entry Workflow
@@ -47,7 +49,7 @@ Out of Scope
 Related paths
 ```
 
-Do not create artifacts while the object or success condition is still unclear.
+Prefer not to create durable structure while the object or success condition is unclear. If exploration is needed, keep it explicitly provisional.
 
 Exit condition:
 
@@ -99,10 +101,11 @@ Related
 Run:
 
 ```bash
+python agentic-structural-harness/scripts/harness.py accept-mirror --root <project-root> <artifact-path>
 python agentic-structural-harness/scripts/harness.py audit --root <project-root>
 ```
 
-If audit detects drift, do not silently repair. Either update the mirror, update the artifact, or leave a conflict.
+`accept-mirror` means a human or agent has reviewed the mirror against the current artifact and wants the current hash to become the baseline. If audit detects drift later, do not silently repair. Either update the mirror, update the artifact, or leave a conflict.
 
 ---
 
@@ -204,7 +207,9 @@ no-front-matter
 no-audit-hash
 artifact-vs-doc
 incomplete-record
-evidence-not-refluxed
+record-name-out-of-schema
+pending-mirror-review
+pending-reflux
 ```
 
 Use:
@@ -215,7 +220,7 @@ python agentic-structural-harness/scripts/harness.py audit --root <project-root>
 
 for a dry report.
 
-Audit does not prove semantic correctness. It proves that the declared structural relationships are present and inspectable.
+Audit does not prove semantic correctness. It proves that declared structural relationships are present and inspectable. Pending review/reflux is a normal working state; only structural breaks become conflict files.
 
 ---
 
@@ -248,6 +253,8 @@ Resolution
 ```
 
 The agent may propose resolution, but should not silently choose which side is true unless the user explicitly granted that authority.
+
+Do not create conflicts for every ordinary unfinished thought. Use conflicts for breaks that would mislead the next agent if left invisible.
 
 ---
 

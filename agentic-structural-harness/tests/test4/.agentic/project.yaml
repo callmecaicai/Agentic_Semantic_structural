@@ -1,0 +1,33 @@
+semantic_root: semantic
+workspace_root: workspace
+pulse_path: semantic/pulse.md
+conflict_dir: semantic/conflicts
+
+stable_objects:
+  - name: python_module
+    artifact_glob: workspace/src/**/*.py
+    mirror_pattern: semantic/field/mirrors/{relative_no_ext}.md
+    template: .agentic/templates/mirror.md
+
+events:
+  - name: experiment
+    record_pattern: semantic/records/experiments/{date}_{event_id}_{slug}
+    template_dir: .agentic/templates/event_record
+    required_files:
+      - index.md
+      - input.md
+      - process.md
+      - output.md
+      - analysis.md
+      - reflux.md
+
+  - name: agent_task
+    record_pattern: semantic/records/agent_tasks/{date}_{event_id}_{slug}
+    template_dir: .agentic/templates/event_record
+    required_files:
+      - index.md
+      - input.md
+      - process.md
+      - output.md
+      - analysis.md
+      - reflux.md

@@ -11,7 +11,7 @@ project/
 
 ## .agentic
 
-Agent-facing control layer. It owns `project.yaml`, templates, and optional audits/adapters. It creates and checks structure; it does not train models or decide semantic truth.
+Agent-facing control layer. It owns `project.yaml`, templates, and optional audits/adapters. It creates and checks structure; it does not train models, decide semantic truth, or replace human-agent review.
 
 ## semantic
 
@@ -53,6 +53,6 @@ Stable objects evolve. Events accumulate. Do not store event history in mirrors.
 read pulse -> check frame/conflicts -> choose clarify/reflux/locate
 locate stable object -> new-artifact
 locate event -> new-event
-audit -> conflict if broken
+audit -> report pending states; write conflict only if structurally broken
 accepted evidence -> reflux into frame/field
 ```

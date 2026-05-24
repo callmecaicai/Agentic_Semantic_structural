@@ -5,7 +5,8 @@ description: "Final agent-friendly semantic harness toolkit for sustained AI-ass
 
 # Agentic Structural Harness
 
-Use this when a project needs an agentic control layer.
+Use this when a project needs an agentic collaboration surface for humans and AI agents.
+It is not a full automation framework. It provides paths, templates, and light checks so agents can re-enter a project, understand it quickly, and leave usable semantic records.
 
 Root shape:
 
@@ -23,7 +24,7 @@ stable object  <-> fixed mirror document
 event instance <-> semantic record folder
 ```
 
-Do not silently repair drift. Audit writes conflicts; user or explicit decision resolves them.
+Do not silently repair drift. Audit records structural breaks; user and agent judgment resolves semantic meaning.
 
 ---
 
@@ -61,12 +62,13 @@ clarify > reflux > locate
 ```bash
 python agentic-structural-harness/scripts/harness.py pulse --root <project-root>
 python agentic-structural-harness/scripts/harness.py new-artifact --root <project-root> workspace/src/foo.py
+python agentic-structural-harness/scripts/harness.py accept-mirror --root <project-root> workspace/src/foo.py
 python agentic-structural-harness/scripts/harness.py new-event --root <project-root> experiment --id exp001 --slug baseline
 python agentic-structural-harness/scripts/harness.py audit --root <project-root>
 python agentic-structural-harness/scripts/harness.py reflux-check --root <project-root>
 ```
 
-The CLI creates structure, checks schema, and records conflicts. It does not train models, write business logic, or decide semantic truth.
+The CLI creates common structure, checks obvious path/schema breaks, and records conflicts only for structural breaks. It does not train models, write business logic, decide semantic truth, or replace agent investigation.
 
 ---
 
@@ -110,6 +112,12 @@ workspace/src/models/backbones/resnet.py
 
 The mirror records identity, I/O, risks, verification, and audit hash. It evolves with the artifact; it does not store event history.
 
+New mirrors start with `audit_hash: pending`. After a human or agent has reviewed the mirror against the artifact:
+
+```bash
+python agentic-structural-harness/scripts/harness.py accept-mirror --root <project-root> workspace/src/models/backbones/resnet.py
+```
+
 ---
 
 ## Event Instance
@@ -142,7 +150,7 @@ Event records never overwrite history.
 python agentic-structural-harness/scripts/harness.py audit --root <project-root>
 ```
 
-Checks:
+Checks structural consistency:
 
 ```text
 uncovered-artifact       artifact without mirror
@@ -151,10 +159,12 @@ no-front-matter          missing front matter
 no-audit-hash            missing audit_hash
 artifact-vs-doc          hash drift
 incomplete-record        event folder missing files
-evidence-not-refluxed    reflux still pending
+record-name-out-of-schema record folder not matching schema
+pending-mirror-review    mirror exists but has not been reviewed
+pending-reflux           event evidence has not been interpreted
 ```
 
-Use `--no-conflicts` to report without writing conflict files.
+Only structural breaks write conflict files. Pending review/reflux is reported without creating conflict noise. Use `--no-conflicts` to report without writing conflict files.
 
 ---
 
@@ -176,4 +186,5 @@ Read only when needed:
 3. Event instances get new semantic record folders.
 4. Paths carry meaning; schema declares meaning; audit checks reality.
 5. Evidence freezes; understanding evolves; decisions explain transitions.
-6. Conflicts are explicit. Do not silently repair semantic drift.
+6. Keep the harness lighter than the project. Let humans and agents make judgment.
+7. Conflicts are explicit. Do not silently repair semantic drift.

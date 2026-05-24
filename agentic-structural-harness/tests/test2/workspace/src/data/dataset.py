@@ -1,0 +1,2 @@
+class DatasetAdapter:
+    pass

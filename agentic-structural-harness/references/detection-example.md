@@ -71,6 +71,7 @@ Suggested commands:
 ```bash
 python agentic-structural-harness/scripts/harness.py init --root remote-sensing-detection
 python agentic-structural-harness/scripts/harness.py new-artifact --root remote-sensing-detection workspace/src/models/detectors/faster_rcnn.py
+python agentic-structural-harness/scripts/harness.py accept-mirror --root remote-sensing-detection workspace/src/models/detectors/faster_rcnn.py
 python agentic-structural-harness/scripts/harness.py new-event --root remote-sensing-detection experiment --id exp001 --slug dataset_a_frcnn --trigger workspace/scripts/train.py
 python agentic-structural-harness/scripts/harness.py audit --root remote-sensing-detection
 ```

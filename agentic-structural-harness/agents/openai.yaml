@@ -1,4 +1,4 @@
 interface:
   display_name: "Agentic Structural Harness"
-  short_description: "Final semantic harness for agentic projects"
-  default_prompt: "Use this harness to structure a project into .agentic control, semantic memory, and workspace execution layers with mirror docs, event records, audit, conflict, and reflux."
+  short_description: "Light semantic workspace for human-agent projects"
+  default_prompt: "Use this harness to give a project .agentic control, semantic memory, and workspace execution layers; create mirror docs and event records; keep audit light; leave judgment to the human-agent loop."

@@ -2,6 +2,8 @@
 
 This harness is a structural method for long-running agentic projects. It assumes the useful unit of collaboration is not a single prompt, a single code edit, or a single document. The useful unit is a project that can be re-entered many times by different agents without losing its intent, structure, evidence, or unresolved conflicts.
 
+It is intentionally a human-agent collaboration platform, not a full automation regime. Humans can ask agents to read, optimize, refactor, reinterpret, or rewrite semantic documents at any time. The harness gives both sides a clear place to work; it does not try to mechanize every judgment.
+
 The harness is built around one first principle:
 
 ```text
@@ -165,11 +167,11 @@ reflux upgrades evidence into understanding
 
 `schema` is the declared rule. In this toolkit it lives in `.agentic/project.yaml`.
 
-`audit` is the reality check. It compares workspace artifacts, semantic mirrors, event records, front matter, hashes, and required files.
+`audit` is a light reality check. It compares workspace artifacts, semantic mirrors, event records, front matter, hashes, and required files. It should catch obvious structural breaks, not prove semantic truth.
 
 `conflict` is the case file. It records mismatch without deciding which side is right.
 
-The harness should create and detect. It should not silently repair. Silent repair destroys judgment.
+The harness should create and detect. It should not silently repair. Silent repair destroys judgment. At the same time, the harness should not flood the project with procedural noise: pending mirror review and pending reflux are normal working states until a human or agent decides what they mean.
 
 ---
 
@@ -313,6 +315,8 @@ over-structure: the project becomes ceremony and stops moving
 ```
 
 The correct structure is the minimum structure that makes the next handoff reliable.
+
+The agent is expected to investigate. A good agent can read code, inspect runs, compare documents, propose rewrites, and ask for user judgment. The harness only gives that agent durable handles: paths, mirrors, records, conflicts, and reflux slots.
 
 ---
 

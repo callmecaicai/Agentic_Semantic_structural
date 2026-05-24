@@ -35,7 +35,7 @@ event instance <-> semantic record folder
 path -> schema -> new-artifact/new-event -> audit -> conflict -> reflux
 ```
 
-发现不一致时不静默修复,先记录 conflict,再由用户或明确决策裁决。
+发现结构性不一致时不静默修复,记录 conflict,再由用户或明确决策裁决。普通的 pending review / pending reflux 是正常工作状态,不制造 conflict 噪音。
 
 ---
 
@@ -72,7 +72,9 @@ agentic-structural-harness/
 └── references/
 ```
 
-它面向真实项目落地,支持初始化 `.agentic/semantic/workspace` 三层结构,创建 mirror doc,创建 event record folder,运行 audit,生成 conflict。
+它面向真实项目落地,支持初始化 `.agentic/semantic/workspace` 三层结构,创建 mirror doc,显式 `accept-mirror`,创建 event record folder,运行轻量 audit,只为结构断裂生成 conflict。
+
+已包含 5 个实践场景:[agentic-structural-harness/tests/](agentic-structural-harness/tests/)
 
 ### 完整方法论包
 
@@ -165,7 +167,8 @@ python domains/deep_learning/audit_coupling.py --no-conflicts
 3. 一次发生必须有增量语义记录文件夹。
 4. 路径表达语义,schema 声明语义,audit 检查现实。
 5. 证据冻结,理解演进,决策解释转折。
-6. 不静默修复 artifact、document、intent、evidence 之间的不一致。
+6. harness 只提供平台、路径、模板、轻量检查;复杂判断交给人和 agent。
+7. 不静默修复 artifact、document、intent、evidence 之间的不一致。
 
 ---
 
