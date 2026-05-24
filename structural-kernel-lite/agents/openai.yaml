@@ -1,0 +1,4 @@
+interface:
+  display_name: "Structural Kernel Lite"
+  short_description: "Compact semantic harness kernel"
+  default_prompt: "Use this compact kernel to structure a sustained project with frame, field, trace, conflicts, artifact mirrors, and event records."

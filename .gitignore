@@ -1,0 +1,30 @@
+# Local agent/runtime state
+.claude/
+
+# Personal local notes
+自我剖析.md
+
+# Secrets and environment files
+.env
+.env.*
+secrets/
+*.key
+*.pem
+*token*
+
+# Python/runtime cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Experiment/runtime outputs
+runs/
+checkpoints/
+wandb/
+logs/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
