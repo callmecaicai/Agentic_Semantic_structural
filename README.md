@@ -48,6 +48,7 @@ path -> schema -> new-artifact/new-event -> audit -> conflict -> reflux
 ├── domains/                    # 领域 adapter
 │   └── deep_learning/          # 深度学习实验工程 adapter
 ├── docs/                       # frame / trace / conflicts 记录
+├── agentic-structural-harness/ # 推荐最终工具包: CLI + templates + references
 ├── structural-kernel-lite/     # 十分之一体积的精简 skill
 ├── pulse.md                    # 当前状态快照
 └── .gitignore
@@ -55,9 +56,25 @@ path -> schema -> new-artifact/new-event -> audit -> conflict -> reflux
 
 ---
 
-## 两套规范
+## 三套入口
 
-### 完整包
+### 推荐最终工具包
+
+入口:[agentic-structural-harness/SKILL.md](agentic-structural-harness/SKILL.md)
+
+这是当前推荐版本,采用 agent 友好的工具包结构:
+
+```text
+agentic-structural-harness/
+├── SKILL.md
+├── scripts/harness.py
+├── templates/
+└── references/
+```
+
+它面向真实项目落地,支持初始化 `.agentic/semantic/workspace` 三层结构,创建 mirror doc,创建 event record folder,运行 audit,生成 conflict。
+
+### 完整方法论包
 
 入口:[SKILL.md](SKILL.md)
 
@@ -73,7 +90,7 @@ path -> schema -> new-artifact/new-event -> audit -> conflict -> reflux
 - [conflict_mechanism.md](kernel/conflict_mechanism.md):冲突显式化
 - [reflux_mechanism.md](kernel/reflux_mechanism.md):证据回流
 
-### 精简包
+### 精简速用包
 
 入口:[structural-kernel-lite/SKILL.md](structural-kernel-lite/SKILL.md)
 
